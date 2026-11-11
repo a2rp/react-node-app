@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
+.app-shell {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  overflow: hidden;
+  place-items: center;
+  padding: 48px 20px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(26, 84, 112, 0.18), transparent 52%), #080b10;
+  color: #edf4fb;
 }
 
-.App-logo {
-  height: 40vmin;
+.background-glow {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.22;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.glow-left { top: 22%; left: -260px; background: #00d4a6; }
+.glow-right { right: -260px; bottom: 8%; background: #4387ff; }
+
+.dashboard {
+  position: relative;
+  width: min(100%, 760px);
+  padding: clamp(24px, 5vw, 48px);
+  border: 1px solid rgba(152, 180, 205, 0.15);
+  border-radius: 24px;
+  background: rgba(13, 18, 26, 0.88);
+  box-shadow: 0 28px 100px rgba(0, 0, 0, 0.45);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+.topbar, .brand, .card-heading, .endpoint-row, .footer { display: flex; align-items: center; }
+.topbar, .card-heading, .endpoint-row, .footer { justify-content: space-between; }
+.brand { gap: 10px; color: inherit; font-size: 14px; font-weight: 700; text-decoration: none; }
+.brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid rgba(0, 232, 180, 0.5); border-radius: 11px; color: #14e5b7; font-size: 12px; letter-spacing: -0.06em; }
+.project-badge, .card-label, .endpoint-row > span:first-child { color: #8c9aaa; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; }
+.project-badge { padding: 7px 10px; border: 1px solid rgba(152, 180, 205, 0.16); border-radius: 999px; }
 
-.App-link {
-  color: #61dafb;
-}
+.hero { max-width: 570px; padding: clamp(44px, 8vw, 76px) 0 32px; }
+.eyebrow { margin: 0 0 12px; color: #17dcb0; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+h1 { margin: 0; font-size: clamp(40px, 8vw, 68px); letter-spacing: -0.07em; line-height: 1; }
+h1 span { color: #19dcb3; }
+.intro { max-width: 490px; margin: 18px 0 0; color: #a8b4c2; font-size: 15px; line-height: 1.7; }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.api-card { padding: 22px; border: 1px solid rgba(152, 180, 205, 0.16); border-radius: 18px; background: rgba(5, 9, 14, 0.74); }
+.api-card.online { border-color: rgba(20, 229, 183, 0.28); }
+.card-label { margin: 0 0 8px; }
+.card-heading h2 { margin: 0; font-size: 19px; letter-spacing: -0.02em; }
+.status-indicator { width: 11px; height: 11px; flex: 0 0 auto; border-radius: 50%; background: #e9ac54; box-shadow: 0 0 16px rgba(233, 172, 84, 0.5); }
+.status-indicator.online { background: #14e5b7; box-shadow: 0 0 16px rgba(20, 229, 183, 0.5); }
+.status-indicator.offline { background: #ff7272; box-shadow: 0 0 16px rgba(255, 114, 114, 0.35); }
+.status-message { margin: 18px 0 0; color: #b4c0cc; font-size: 14px; line-height: 1.6; }
+.response-json { overflow: auto; margin: 18px 0 0; padding: 16px; border: 1px solid rgba(152, 180, 205, 0.12); border-radius: 12px; background: #080d13; color: #92e8d0; font-size: 13px; line-height: 1.6; }
+.retry-button { margin-top: 18px; padding: 10px 14px; border: 1px solid rgba(20, 229, 183, 0.4); border-radius: 10px; background: rgba(20, 229, 183, 0.1); color: #d7fff5; cursor: pointer; font: inherit; font-size: 13px; font-weight: 700; }
+.retry-button:hover:not(:disabled) { background: rgba(20, 229, 183, 0.18); }
+.retry-button:disabled { cursor: wait; opacity: 0.65; }
+
+.endpoint-row { flex-wrap: wrap; gap: 12px; margin-top: 18px; padding: 14px 2px; border-bottom: 1px solid rgba(152, 180, 205, 0.12); }
+.endpoint-row code { margin-right: auto; color: #dbe7f2; font-size: 13px; }
+.endpoint-row code b { margin-right: 8px; color: #14e5b7; font-size: 11px; }
+.endpoint-detail, .footer { color: #8492a1; font-size: 11px; }
+.footer { gap: 16px; padding-top: 20px; }
+
+@media (max-width: 560px) {
+  .app-shell { padding: 20px 12px; }
+  .dashboard { padding: 22px 18px; border-radius: 18px; }
+  .project-badge { font-size: 8px; }
+  .hero { padding-top: 52px; }
+  .api-card { padding: 18px; }
+  .footer { align-items: flex-start; flex-direction: column; }
 }
